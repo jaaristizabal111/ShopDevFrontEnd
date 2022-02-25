@@ -1,0 +1,16 @@
+body {
+    width: 100%;
+  }
+  header{
+    /* border: 1px solid rgb(0, 255, 76); */
+    width: 1475px;
+      margin-left: 61px;
+      height: 79px;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      background-color: #155983;
+}
+h3{
+  font-size: 22px;
+}

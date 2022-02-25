@@ -1,0 +1,35 @@
+main {
+    width: 1473px;
+    margin-left: 61px;
+  }
+  .container{
+    margin-top: 1em;
+    height: 31em;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    position: relative;
+    left: 0em;
+    top: 2em;
+  }
+.containerTitulo{
+    display: flex;
+    justify-content: space-between;
+}
+.containerInfNombId{
+  display: flex;
+
+}
+
+.containerInfPrecCategCanti{
+  display: flex;
+}
+.modal-body2{
+  display: flex;
+  flex-direction: column;
+  height: 24em;
+  justify-content: space-evenly;
+}
+.tamañoButton{
+  width: 10em;
+}
