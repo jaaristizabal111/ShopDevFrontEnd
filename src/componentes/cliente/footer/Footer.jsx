@@ -1,3 +1,4 @@
+import React from 'react';
 import './Footer.css';
 import Isotipo from '../../../assets/img/Isotipo.png';
 import paypal from '../../../assets/img/paypal.jpg';

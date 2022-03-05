@@ -1,3 +1,4 @@
+import React from 'react';
 import './ContenidoMisProductosAdmin.css';
 import { BarraLateral } from '../../administrador/barraLateral/BarraLateral';
 import { HeaderAdmin } from '../../administrador/headerAdmin/HeaderAdmin';

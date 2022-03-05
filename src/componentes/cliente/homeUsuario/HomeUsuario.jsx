@@ -1,3 +1,4 @@
+import React from 'react';
 import './HomeUsuario.css';
 /* import { Footer } from '../footer/Footer'; */
 import { Header } from '../header/Header';
@@ -13,6 +14,7 @@ import codigo from '../../../assets/img/codigo.jpg'
 import computer from '../../../assets/img/computer.jpg'
 import codigoC from '../../../assets/img/codigoC.jpg'
 import { Footer } from '../footer/Footer';
+
 
 export const HomeUsuario = () => {
     return (

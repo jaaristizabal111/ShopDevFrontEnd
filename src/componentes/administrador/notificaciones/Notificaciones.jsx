@@ -1,3 +1,4 @@
+import React from 'react';
 import './Notificaciones.css'
 import { BarraLateral } from '../../administrador/barraLateral/BarraLateral';
 import { HeaderAdmin } from '../../administrador/headerAdmin/HeaderAdmin';

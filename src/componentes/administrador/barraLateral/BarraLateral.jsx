@@ -1,3 +1,5 @@
+import React from 'react';
+
 import './BarraLateral.css';
 import Isotipo from '../../../assets/img/Isotipo.png';
 

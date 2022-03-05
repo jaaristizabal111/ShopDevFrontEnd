@@ -1,3 +1,4 @@
+import React from 'react';
 import './ContenidoVentanaProducto.css';
 import { Header } from '../header/Header';
 import { Footer } from '../footer/Footer';
