@@ -1,7 +1,7 @@
 import './Registro.css';
 import React from 'react';
 import { useState } from 'react';
-import { saveRegistro } from '../../services/apirest';
+import { saveRegistro } from '../../services/servicioShopdev';
 
 export const Registro = () => {
 
@@ -35,7 +35,62 @@ export const Registro = () => {
 
     return(
         <React.Fragment> {/* Que significa */}
-                <div className="container">
+            <div className="div-login p-5">
+                        <div className="div-login-h1 mb-5">
+                            <h4>Inicio de sesión</h4>
+                        </div>
+                        <div>
+                            <form className="input-group ">
+                                <input type="text" className="form-control" placeholder='Correo' 
+                                    aria-describedby="basic-addon1" style={{ borderRadius: "0", height: "4em", width: "24em" }} />
+                                <br /><br />
+                                <input type="password" className="form-control" placeholder='Contraseña' 
+                                    aria-describedby="basic-addon1" style={{ borderRadius: "0", height: "4em", width: "24em" }} />
+                            </form>
+                        </div>
+                    
+                            <div>
+                                <button type="button" className="mt-5 btn btn-lg  btn-fondo" style={{ width: "-webkitFillAvailable 19em" }}>Ingresar</button>
+                            </div>
+                            <br /><br />
+                            <div>
+                                <a href="registro">Crear cuenta nueva</a>
+                            </div>
+                    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                {/* <div className="container">
                     <div className="row">
                         <div className="col-md-offset-5 col-md-4 text-center">
                             <div className="form-login">
@@ -72,7 +127,7 @@ export const Registro = () => {
                 <br/><br/><br/><br/><br/><br/>
                 <div className="footer text-white text-center">
                     <p>© 2022 Unique Login Form. All rights reserved | Design by <a href="https://www.google.com/">ShopDev</a></p>
-                </div>
+                </div> */}
             </React.Fragment>
     )
 }

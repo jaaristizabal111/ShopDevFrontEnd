@@ -8,7 +8,7 @@
 }
 .footer{
   height: 6em;
-  background-color: #155983;
+  background-image: linear-gradient( to right, #32a3e9,#1e46ae,#0674b9);
   display: flex;
   justify-content: space-around;
   align-items: center;

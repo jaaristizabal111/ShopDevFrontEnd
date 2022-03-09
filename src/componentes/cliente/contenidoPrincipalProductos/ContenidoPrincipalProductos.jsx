@@ -19,11 +19,11 @@ export const ContenidoPrincipalProductos = () => {
                                 Filtrar por talla
                             </button>
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                <li><a class="dropdown-item" href="#">XS</a></li>
-                                <li><a class="dropdown-item" href="#">S</a></li>
-                                <li><a class="dropdown-item" href="#">M</a></li>
-                                <li><a class="dropdown-item" href="#">L</a></li>
-                                <li><a class="dropdown-item" href="#">XL</a></li>
+                                <li><a class="dropdown-item" href="/">XS</a></li>
+                                <li><a class="dropdown-item" href="/">S</a></li>
+                                <li><a class="dropdown-item" href="/">M</a></li>
+                                <li><a class="dropdown-item" href="/">L</a></li>
+                                <li><a class="dropdown-item" href="/">XL</a></li>
                             </ul>
                         </div>
                         <div class="dropdown">
@@ -31,11 +31,11 @@ export const ContenidoPrincipalProductos = () => {
                                 Filtrar por color
                             </button>
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                <li><a class="dropdown-item" href="#">Verde</a></li>
-                                <li><a class="dropdown-item" href="#">Azul</a></li>
-                                <li><a class="dropdown-item" href="#">Blanco</a></li>
-                                <li><a class="dropdown-item" href="#">Negro</a></li>
-                                <li><a class="dropdown-item" href="#">Gris</a></li>
+                                <li><a class="dropdown-item" href="/">Verde</a></li>
+                                <li><a class="dropdown-item" href="/">Azul</a></li>
+                                <li><a class="dropdown-item" href="/">Blanco</a></li>
+                                <li><a class="dropdown-item" href="/">Negro</a></li>
+                                <li><a class="dropdown-item" href="/">Gris</a></li>
                             </ul>
                         </div>
                         <div class="dropdown">

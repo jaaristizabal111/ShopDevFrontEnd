@@ -1,9 +1,13 @@
 import React from 'react';
-
+import { useNavigate } from 'react-router-dom';
 import './BarraLateral.css';
 import Isotipo from '../../../assets/img/Isotipo.png';
 
 export const BarraLateral = () => {
+
+    /* NECESARIO PARA EL FLUJO ENTRE RUTAS */
+    const navigate = useNavigate();
+
     return (
         <>
         <nav className="main-menu">
@@ -11,29 +15,30 @@ export const BarraLateral = () => {
                     {/* icono blanco redondo / todos los iconos de la barra lateral */}
                     <li>
                         <a href="http://justinfarrow.com">
-                            <img src={Isotipo} alt="Isotipo" />
+                            <img className='logoIsotipo'  src={Isotipo} alt="Isotipo" />
                         </a>
                         <hr style={{ backgroundColor: 'white' }}></hr>
                     </li>
                     <li className="has-subnav mt-4">
                         <a>
-                            <i className="fa icon-barra fa-chart-line fa-2x"></i>
-                            <span className="nav-text">
+                            <i className="fa fa-solid icon-barra fa-list-check  fa-2x"></i>
+                            <span className="nav-text" onClick={goToAdminPedidos}>
                                 Pedidos
                             </span>
                         </a>
                     </li>
                     <li className="has-subnav mt-4">
                         <a>
-                            <i className="fa icon-barra  fa-users fa-2x"></i>
-                            <span className="nav-text">
+                        {/* <i className=" fa fa-solid icon-barra fa-cart-flatbed-boxes fa-2x" ></i> */}
+                        <i class="fa fa-solid fa-bell-on icon-barra fa-x2"></i>
+                            <span className="nav-text" onClick={goToAdminProductos}>
                                 Productos
                             </span>
                         </a>
                     </li>
                     <li className="has-subnav mt-4">
                         <a>
-                            <i className="fa icon-barra fa-chart-line fa-2x"></i>
+                        <i className="fa fa-solid icon-barra fa-bell-on fa-2x"></i>
                             <span className="nav-text">
                                 Notificaciones
                             </span>
@@ -43,4 +48,13 @@ export const BarraLateral = () => {
             </nav>
         </>
     )
+    /* LOGICA DE FLUJOS */
+    function goToAdminPedidos() {
+        let ruta = "/admin/pedidos";        
+        navigate(ruta);
+    }
+    function goToAdminProductos() {
+        let ruta = "/admin/productos";        
+        navigate(ruta);
+    }
 }

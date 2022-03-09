@@ -1,14 +1,9 @@
-@import url(//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css);
-@import url(https://fonts.googleapis.com/css?family=Titillium+Web:300);
-img{
-  width: 50px;
-    height: 50px;
-    margin-left: 6px;
+.logoIsotipo{
+  height: 28px;
     margin-top: 4px;
+    margin-left: 19px;
 }
-.fa-2x {
-  font-size: 2em;
-}
+
 .fa {
   position: relative;
   display: table-cell;
@@ -30,8 +25,7 @@ nav.main-menu.expanded {
 }
 
 .main-menu {
-  background-color: #155983;
- /*  background-image: linear-gradient(#289be2, #1e46ae); */
+  background-image: linear-gradient(#32a3e9, #1e46ae, #0674b9);
   border-right: 1px solid #e5e5e5;
   position: absolute;
   top: 0;
@@ -152,104 +146,3 @@ nav.main-menu li.active > a,
     url(http://themes.googleusercontent.com/static/fonts/titilliumweb/v2/anMUvcNT0H1YN4FII8wpr24bNCNEoFTpS2BTjF6FB5E.woff)
       format("woff");
 }
-/* .main{
-    display: flex;
-    flex-direction: row;
-    border: 1px solid red;
-    height: 38em;
-}
-img{
-  height: 1em;
-    width: 1em;
-}
-.aside{
-    border: 1px solid rgb(60, 255, 0);
-}
-#barra-lateral {
-  background-color: #66cccc;
-    height: 100%;
-    width: 5em;
-    display: flex;
-    flex-direction: column;
-  }
-  
-  #barra-lateral ul,
-  li {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
-  
-  #barra-lateral ul li.hover,
-  #barra-lateral ul li:hover {
-    position: relative;
-    z-index: 599;
-    cursor: default;
-  }
-  
-  #barra-lateral ul ul {
-    visibility: hidden;
-    position: absolute;
-    z-index: 598;
-    width: 100%;
-  }
-  
-  #barra-lateral ul li:hover>ul {
-    visibility: visible;
-  }
-  
-  #barra-lateral ul ul {
-    top: 0;
-    left: 100%;
-  }
-  
-  #barra-lateral span,
-  #barra-lateral a {
-    display: inline-block;
-    text-decoration: none;
-  }
-  
-  #barra-lateral:after,
-  #barra-lateral ul:after {
-    content: '';
-    display: block;
-    clear: both;
-  }
-  
-  #barra-lateral ul,
-  #mbarra-lateral li {
-    width: 100%;
-  }
-  
-  #barra-lateral li {
-    background: #66cccc;
-    border: 3px solid rgb(0, 183, 255);
-  }
-  
-  #barra-lateral li:hover {
-    background: #26dabc;
-    border: 1px solid rgb(229, 255, 0);
-
-  }
-  
-  #barra-lateral a {
-    color: white;
-    padding: 11px 28px 11px 28px;
-    width: 8em;
-  }
-  
-  #barra-lateral a:hover {
-    color: rgba(24, 26, 25, 0.808);
-  }
-  
-  #barra-lateral ul ul li {
-    background: #cc66ad;
-  }
-  
-  #barra-lateral ul ul li:hover {
-    background: #bfda26;
-  }
-  
-  #barra-lateral ul ul li:hover a {
-    color: rgba(12, 8, 233, 0.808);
-  } */

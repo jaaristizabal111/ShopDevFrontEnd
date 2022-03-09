@@ -1,57 +1,33 @@
-body {
-    /* background-image:url(../../assets/img/humo.jpg); */
-    background-position:center;
-    background-size:cover;
+.fondo {
+    background-image: url("../../assets/img/codigo.jpg");
+    border-bottom-right-radius: 95%;
+    height: 50em;
+    background-size: cover;
+    background-position: center;
     background-repeat: no-repeat;
-    -webkit-font-smoothing: antialiased;
-    font: normal 14px Roboto,arial,sans-serif;
-    font-family: 'Dancing Script', cursive!important;
+    padding: 66px;
+    opacity: 0.7;
   }
-  
-  .container {
-      padding: 66px;
+  .div-login {
+    margin-top: 10em;
+    width: 33em;
+    margin-left: 53em;
+    border-radius: 2em;
+    height: 28em;
+    -webkit-box-shadow: 0 15px 10px rgba(0, 0, 0, 0.7);
+    box-shadow: 0 15px 10px rgba(0, 0, 0, 0.7);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    color: black !important;
+
   }
-  ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-      color: #ffffff!important;
-      opacity: 1; /* Firefox */
-      font-size:20px!important;
-  }
-  .form-login {
-      background-color: rgba(0,0,0,0.55);
-      padding-top: 10px;
-      padding-bottom: 20px;
-      padding-left: 20px;
-      padding-right: 20px;
-      border-radius: 15px;
-      border-color:#d2d2d2;
-      border-width: 5px;
-      color:white;
-      box-shadow:0 1px 0 #cfcfcf;
-      width: 27em;
-      height: 21em;
-  }
-  .form-control{
-      background:transparent!important;
-      color:white!important;
-      font-size: 18px!important;
-  }
-  
-  h4 { 
-   border:0 solid rgb(248, 248, 248); 
-   border-bottom-width:1px;
-   padding-bottom:10px;
-   text-align: center;
-  }
-  
-  .form-control {
-      border-radius: 10px;
-  }
-  .text-white{
-      color: white!important;
-  }
-  .wrapper {
-      text-align: center;
-  }
-  .footer p{
-      font-size: 19px;
-  }
+.btn-fondo{
+  background-color: #0674b9;
+  color: black;
+}
+a{
+  text-decoration: none;
+  color: black;
+}

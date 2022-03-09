@@ -1,107 +1,217 @@
-import './Login.css';
-import React from 'react';
-import { useState } from 'react';
-import { saveLogin } from '../../services/apirest'
+import "./Login.css";
+import React from "react";
+import { useState } from "react";
+import { saveLogin } from "../../services/servicioShopdev";
+import { saveRegistro } from "../../services/servicioShopdev";
+import { useNavigate } from 'react-router-dom';
 
 export const Login = () => {
+
+    /* NECESARIO PARA EL FLUJO ENTRE RUTAS */
+    const navigate = useNavigate();
+
+    /* LOGICA LOGIN */
     const [formValuesLogin, setFormValuesLogin] = useState({
-            correo: '',
-            contraseña: '',
-        });
-    
-    const actualizacionForm = (value, campo) =>{
+        correo: "",
+        contraseña: "",
+    });
+
+    const actualizacionForm = (value, campo) => {
         setFormValuesLogin({
             ...formValuesLogin,
-            [campo]:value,
+            [campo]: value,
+        });
+
+    };
+
+    const iniciarSesion = () => {
+        //event.preventDefault();
+        var a = saveLogin({ ...formValuesLogin });
+        if (saveLogin.rol === 1) {
+            goToHomeCliente();
+        } if (saveLogin.rol === 2) {
+            goToAdminProductos();
+        }
+
+
+        goToHomeCliente();
+        goToAdminProductos();
+        console.log(a);
+        
+    };
+
+ 
+
+    /* LOGICA REGISTRO */
+    const [formValuesRegistro, setformValuesRegistro] = useState({
+        cedula: '',
+        nombres: '',
+        telefono: '',
+        departamento: '',
+        ciudad: '',
+        direccion: '',
+        correo: '',
+        contraseña: '',
+        rol: '',
+    });
+
+    const actualizacionFormRegistro = (value, campo) => {
+        setformValuesRegistro({
+            ...formValuesRegistro,
+            [campo]: value,
         })
     }
-    
-    const _handleSubmit = (event) => {
-        event.preventDefault()
-        handleSubmit({...formValuesLogin})
+
+    const Registro = () => {
+        /* event.preventDefault() */
+        saveRegistro({ ...formValuesRegistro })
+        goToLogin()
     }
 
-    const handleSubmit = (data) => {
-        saveLogin(data)
-    }
-    
-        return(
-            <React.Fragment> {/* Que significa */}
+    return (
+        <React.Fragment> 
+            {/* FONDO LOGIN-IMG */}
             <div className="fondo">
-            <div className="div-aplication">
-                {/*  <h2 style={{ color: "white" }}>Aplicacion <br> OLSoftware <br></h2> */}
-                <p style={{ color: "white" }}>Prueba practica Front-end </p>
-            </div>
-            <div className="div-login p-5">
-                <div className="div-login-h1 mb-5">
-                    <h4>Inicio de sesion</h4>
-                </div>
-                <div>
-                    <div className="input-group ">
-                        <input type="text" className="form-control" placeholder="Usuario" 
-                            aria-describedby="basic-addon1" style={{ borderRadius: "0", height: "4em", width: "24em" }} />
+                <div className="div-login p-5">
+                    <div className="div-login-h1 mb-5">
+                        <h4>Inicio de sesión</h4>
                     </div>
-                    <div className="input-group" style={{ boxShadow: "teal" }}>
-                        <input type="text" className="form-control" placeholder="Contraseña" 
-                            aria-describedby="basic-addon1" style={{ borderRadius: "0", boxShadow: "teal", height: "4em", width: "24em" }} />
+                    <div>
+                        {/* FORMULARIO LOGIN */}
+                        <form className="input-group ">
+                            <input type="text" className="form-control" name="correo"
+                            value={formValuesLogin.correo} onChange={({ target }) =>
+                            actualizacionForm(target.value, "correo")}
+                            placeholder="Correo" aria-describedby="basic-addon1"
+                            style={{ borderRadius: "0", height: "4em", width: "24em" }}/>
+                            <br /><br />
+                            <input
+                                type="password"
+                                className="form-control"
+                                name="contraseña"
+                                value={formValuesLogin.contraseña}
+                                onChange={({ target }) =>
+                                    actualizacionForm(target.value, "contraseña")
+                                }
+                                placeholder="Contraseña"
+                                aria-describedby="basic-addon1"
+                                style={{ borderRadius: "0", height: "4em", width: "24em" }}
+                            />
+                        </form>
                     </div>
-                </div>
-                <div>
-                    <button type="button" className="mt-5 btn btn-primary btn-lg" style={{ width: "-webkitFillAvailable 19em" }}>Iniciar sesion
-                    </button>
+
+                    <div>
+                        <button
+                            type="button"
+                            className="mt-5 btn btn-lg  btn-fondo"
+                            onClick={iniciarSesion}
+                            style={{ width: "-webkitFillAvailable 19em" }}>
+                            Ingresar
+                        </button>
+                    </div>
+                    <br />
+                    <br />
+
+                    <a href="registro" class="btn" data-bs-toggle="modal" data-bs-target="#modalRegistro">
+                        Crear cuenta nueva
+                    </a>
                 </div>
             </div>
-        </div>
 
+            {/* MODAL DE REGISTRO */}
+            <div className="modal" tabIndex="-1" id="modalRegistro">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Registrar Usuario</h5>
+                        </div>
+                        <div className="modal-body">
 
+                            <form className="input-group ">
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                {/* <div className="container">
-                    <div className="row">
-                        <div className="col-md-offset-5 col-md-4 text-center">
-                            <div className="form-login">
-                                <h4>Iniciar sesión</h4>
                                 <br /><br />
-                                <form>
-                                <input type="text" id="userName" className="form-control input-sm chat-input" name='correo' value={formValuesLogin.correo} onChange={({target}) => actualizacionForm(target.value, 'correo')} placeholder="Usuario"/>
-                                <br /><br />
-                                <input type="password" id="userPassword" className="form-control input-sm chat-input" name='contraseña' value={formValuesLogin.contraseña} onChange={({target}) => actualizacionForm(target.value, 'contraseña')} placeholder="Contraseña"/>
-                                <br /><br />
-                                </form>
-                                <div className="wrapper">
-                                        <span className="group-btn">
-                                        <button type='button' className="btn btn-danger btn-md"  onClick={ _handleSubmit }> Ingresar <i className="fa fa-sign-in"></i></button>
-                                        </span>
+                                <div className="row">
+                                    <div className="form-group col">
+                                        <input type="text" className="form-control input-sm chat-input" name='cedula' value={formValuesRegistro.cedula} onChange={({ target }) => actualizacionFormRegistro(target.value, 'cedula')} placeholder="Cedula" />
+                                    </div>
+                                    <div className="form-group col">
+                                        <input type="text" className="form-control input-sm chat-input" name='nombres' value={formValuesRegistro.nombres} onChange={({ target }) => actualizacionFormRegistro(target.value, 'nombres')} placeholder="Nombres" />
+                                    </div>
                                 </div>
+                                <br /><br />
+
+                                <div className="row">
+                                    <div className="form-group col">
+                                        <input type="text" className="form-control input-sm chat-input" name='telefono' value={formValuesRegistro.telefono} onChange={({ target }) => actualizacionFormRegistro(target.value, 'telefono')} placeholder="Telefono" />
+                                    </div>
+
+                                    <div className="form-group col">
+                                        <input type="text" className="form-control input-sm chat-input" name='departamento' value={formValuesRegistro.departamento} onChange={({ target }) => actualizacionFormRegistro(target.value, 'departamento')} placeholder="Departamento" />
+                                    </div>
+                                </div>
+                                <br /><br />
+                                <div className="row">
+                                    <div className="form-group col">
+                                        <input type="text" className="form-control input-sm chat-input" name='ciudad' value={formValuesRegistro.ciudad} onChange={({ target }) => actualizacionFormRegistro(target.value, 'ciudad')} placeholder="Ciudad" />
+                                    </div>
+
+                                    <div className="form-group col">
+                                        <input type="text" className="form-control input-sm chat-input" name='direccion' value={formValuesRegistro.direccion} onChange={({ target }) => actualizacionFormRegistro(target.value, 'direccion')} placeholder="Direccion" />
+                                    </div>
+                                </div>
+
+                                <br /><br />
+
+                                <div className="row">
+                                    <div className="form-group col">
+                                        <input type="text" className="form-control input-sm chat-input" name='correo' value={formValuesRegistro.correo} onChange={({ target }) => actualizacionFormRegistro(target.value, 'correo')} placeholder="Usuario" />
+                                    </div>
+
+                                    <div className="form-group col">
+                                        <input type="password" className="form-control input-sm chat-input" name='contraseña' value={formValuesRegistro.contraseña} onChange={({ target }) => actualizacionFormRegistro(target.value, 'contraseña')} placeholder="Contraseña" />
+                                    </div>
+                                </div>
+
+                                <br /><br />
+
+                                <div className="row">
+                                    <div className="form-group col">
+                                        <input type="password" className="form-control input-sm chat-input" name='rol' value={formValuesRegistro.rol} onChange={({ target }) => actualizacionFormRegistro(target.value, 'rol')} placeholder="Rol" />
+                                    </div>
+                                </div>
+                                <br /><br />
+                            </form>
+                            
+                            <div class="modal-footer">
+                                <button
+                                    type="button"
+                                    class="btn btn-secondary"
+                                    data-bs-dismiss="modal"
+                                >
+                                    Cancelar
+                                </button>
+                                <button type='button' className="btn btn-danger btn-md" onClick={Registro}> Registrarse </button>
                             </div>
                         </div>
                     </div>
                 </div>
-                <br/><br/><br/><br/><br/><br/>
-                <div className="footer text-white text-center">
-                    <p>© 2022 Unique Login Form. All rights reserved | Design by <a href="https://www.google.com/">ShopDev</a></p>
-                </div>  */}
-            </React.Fragment>
-        )
-}
+            </div>
+        </React.Fragment>
+    );
+
+    {/* FUNCIONES DE RUTAS */ }
+    function goToHomeCliente() {
+        let ruta = "/cliente/home";
+        navigate(ruta);
+    }
+    
+    function goToAdminProductos() {
+        let ruta = "/admin/productos";
+        navigate(ruta);
+    }
+
+    function goToLogin() {
+        let ruta = "/login";
+        navigate(ruta);
+    }
+};

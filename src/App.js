@@ -3,7 +3,6 @@ import React from 'react'
 //ADMINISTRADOR
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { Login } from './componentes/login/Login'
-import { Registro } from './componentes/registro/Registro'
 import { ContenidoMisProductosAdmin } from './componentes/administrador/contenidoMisProductosAdmin/ContenidoMisProductosAdmin'
 import { ContenidoPedidosAdmin } from './componentes/administrador/contenidoPedidosAdmin/ContenidoPedidosAdmin'
 import { Notificaciones } from './componentes/administrador/notificaciones/Notificaciones'
@@ -20,8 +19,7 @@ const App = () => {
       < BrowserRouter >
         <Routes>
           {/* ADMINISTRADOR */}
-          <Route path="/login" exact element={<Login />} />
-          <Route path="registro" exact element={<Registro />} />
+          <Route path="login" exact element={<Login />} />
           <Route path="admin/productos" exact element={<ContenidoMisProductosAdmin />} />
           <Route path="admin/pedidos" exact element={<ContenidoPedidosAdmin />} />
           <Route path="admin/notificaciones" exact element={<Notificaciones />} />
