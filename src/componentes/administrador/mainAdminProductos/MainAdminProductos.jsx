@@ -54,6 +54,17 @@ export const MainAdminProductos = () => {
     }
 
 
+    /* LOGICA DE LISTAR PRODUCTOS ADMIN API */
+
+    const getProductos = () => {
+        axios.get("https://shopdevbackend.herokuapp.com/homeProductos")
+        .then( data => {         
+            setListaProductos(data.data.Mensaje)           
+            console.log(listaProductos)            
+        })
+    }
+
+
     /* LOGICA DE ELIMINAR NUEVO PRODUCTO */
     const [eliminarNuevoProducto, setEliminarNuevoProducto] = useState({
         eliminar: "",
@@ -70,15 +81,6 @@ export const MainAdminProductos = () => {
         deleteNuevoProducto({...eliminarNuevoProducto});
     }
 
-    /* LOGICA DE LISTAR PRODUCTOS ADMIN API */
-    
-    const getProductos = () => {
-        axios.get("https://shopdevbackend.herokuapp.com/homeProductos")
-        .then( data => {         
-            setListaProductos(data.data.Mensaje)           
-            console.log(listaProductos)            
-        })
-    }   
 
 
 

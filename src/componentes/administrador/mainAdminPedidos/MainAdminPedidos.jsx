@@ -31,6 +31,7 @@ export const MainAdminPedidos = () => {
                                 <select name="" id="">
                                     <option value="">Pendiente</option>
                                     <option value="">Finalizado</option>
+                                    <option value="">En proceso</option>
                                 </select>
                             </td>
                             <td>

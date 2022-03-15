@@ -2,15 +2,17 @@ import axios, { Axios } from 'axios'
 import React from 'react';
 
 export default class servicioShopdev extends React.Component {
-    getProductos(){
-        
-    }
+
+
+    iniciarSesion() { }
+    getProductos() { }
+
+
 }
 
 
 /* PARA LOGIN */
-
-export async function saveLogin(loginData) {
+/* export async function saveLogin(loginData) {
     var response;
     try {
         console.log(loginData);
@@ -32,7 +34,7 @@ export async function saveLogin(loginData) {
         console.log(e)
     }
     console.log(response)
-}
+} */
 
 /* PARA REGISTRO */
 export async function saveRegistro(registroData) {

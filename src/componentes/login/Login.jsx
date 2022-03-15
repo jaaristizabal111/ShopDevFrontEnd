@@ -1,9 +1,9 @@
 import "./Login.css";
 import React from "react";
 import { useState } from "react";
-import { saveLogin } from "../../services/servicioShopdev";
 import { saveRegistro } from "../../services/servicioShopdev";
 import { useNavigate } from 'react-router-dom';
+import axios from "axios";
 
 export const Login = () => {
 
@@ -21,23 +21,14 @@ export const Login = () => {
             ...formValuesLogin,
             [campo]: value,
         });
-
     };
 
     const iniciarSesion = () => {
-        //event.preventDefault();
-        var a = saveLogin({ ...formValuesLogin });
-        if (saveLogin.rol === 1) {
-            goToHomeCliente();
-        } if (saveLogin.rol === 2) {
-            goToAdminProductos();
-        }
-
-
-        goToHomeCliente();
-        goToAdminProductos();
-        console.log(a);
-        
+        axios.post("https://shopdevbackend.herokuapp.com/login")
+        .then(data => {
+            setFormValuesLogin(data)
+            console.log(formValuesLogin)
+        })
     };
 
  
