@@ -2,12 +2,9 @@ import axios, { Axios } from 'axios'
 import React from 'react';
 
 export default class servicioShopdev extends React.Component {
-
-
-    iniciarSesion() { }
     getProductos() { }
-
-
+    eliminarProducto(){}
+    modificarProducto(){}
 }
 
 
@@ -95,25 +92,6 @@ export async function saveNuevoProducto(registroData) {
 }
 
 /* PARA eliminar nuevo producto */
-export async function deleteNuevoProducto(eliminarData) {
-    var response;
-    try {
-        console.log(eliminarData);
-        const formData = new FormData()
-
-        formData.append('eliminar', eliminarData.eliminar)
-
-        response = await axios({
-            url: `https://shopdevbackend.herokuapp.com/nuevoProducto`,
-            method: '',
-            data: formData,
-        })
-
-        return response
-    } catch (e) {
-        console.log(e)
-    }
-}
 
 
 
@@ -145,24 +123,5 @@ export async function deleteNuevoProducto(eliminarData) {
         console.log(e)
     }
 } */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 

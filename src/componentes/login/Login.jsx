@@ -4,13 +4,15 @@ import { useState } from "react";
 import { saveRegistro } from "../../services/servicioShopdev";
 import { useNavigate } from 'react-router-dom';
 import axios from "axios";
+import { useEffect } from "react";
+
 
 export const Login = () => {
 
     /* NECESARIO PARA EL FLUJO ENTRE RUTAS */
     const navigate = useNavigate();
 
-    /* LOGICA LOGIN */
+    /* formulario con valores LOGIN*/
     const [formValuesLogin, setFormValuesLogin] = useState({
         correo: "",
         contraseña: "",
@@ -24,16 +26,15 @@ export const Login = () => {
     };
 
     const iniciarSesion = () => {
-        axios.post("https://shopdevbackend.herokuapp.com/login")
-        .then(data => {
-            setFormValuesLogin(data)
-            console.log(formValuesLogin)
+        axios.post("https://shopdevbackend.herokuapp.com/login", formValuesLogin)
+        .then(response => {
+            console.log(response);
         })
     };
 
  
 
-    /* LOGICA REGISTRO */
+    /* formulario con valores REGISTRO*/
     const [formValuesRegistro, setformValuesRegistro] = useState({
         cedula: '',
         nombres: '',
@@ -54,9 +55,11 @@ export const Login = () => {
     }
 
     const Registro = () => {
-        /* event.preventDefault() */
-        saveRegistro({ ...formValuesRegistro })
-        goToLogin()
+        axios.post("https://shopdevbackend.herokuapp.com/registro", formValuesRegistro)
+        .then(response => {
+            console.log(response);
+            
+        })
     }
 
     return (
@@ -160,14 +163,6 @@ export const Login = () => {
 
                                     <div className="form-group col">
                                         <input type="password" className="form-control input-sm chat-input" name='contraseña' value={formValuesRegistro.contraseña} onChange={({ target }) => actualizacionFormRegistro(target.value, 'contraseña')} placeholder="Contraseña" />
-                                    </div>
-                                </div>
-
-                                <br /><br />
-
-                                <div className="row">
-                                    <div className="form-group col">
-                                        <input type="password" className="form-control input-sm chat-input" name='rol' value={formValuesRegistro.rol} onChange={({ target }) => actualizacionFormRegistro(target.value, 'rol')} placeholder="Rol" />
                                     </div>
                                 </div>
                                 <br /><br />

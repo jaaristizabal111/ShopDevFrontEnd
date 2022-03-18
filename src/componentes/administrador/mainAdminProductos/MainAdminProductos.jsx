@@ -1,5 +1,4 @@
 import { saveNuevoProducto } from "../../../services/servicioShopdev";
-import { deleteNuevoProducto } from "../../../services/servicioShopdev";
 import axios, { Axios } from 'axios'
 import './MainAdminProductos.css';
 import React, { useEffect } from "react";
@@ -10,23 +9,12 @@ import  angularLogo  from "../../../assets/img/AngularLogo.jpg"
 
 export const MainAdminProductos = () => {
 
-    const [listaProductos, setListaProductos] = useState([
-        {
-            imagen: "imagen x",
-            nombre: "Luisa",
-            codigo: "123",
-            precio: "15000",
-            cantidad: 3,
-        }
-    ]);
-
+    const [listaProductos, setListaProductos] = useState([]);
 
     /* LO PRIMERO QUE SE VA A EJECUTAR */
     useEffect(() => {
         getProductos();  
     }, [])
-
-   
 
     /* LOGICA CONSUMO API NUEVO PRODUCTO */
     const [formValuesNuevoProducto, setFormValuesNuevoProducto] = useState({
@@ -38,7 +26,6 @@ export const MainAdminProductos = () => {
         talla: "",
         descripcion: "",
         imagen: "",
-        tallaje: "",
     });
 
     const actualizacionFormNuevoProducto = (value, campo) => {
@@ -49,37 +36,63 @@ export const MainAdminProductos = () => {
     };
 
     const _enviarNuevoProducto = () => {
-        /* event.preventDefault(); */
         saveNuevoProducto({...formValuesNuevoProducto});
+        creacionNuevoProducto();
     }
 
-
     /* LOGICA DE LISTAR PRODUCTOS ADMIN API */
-
     const getProductos = () => {
         axios.get("https://shopdevbackend.herokuapp.com/homeProductos")
         .then( data => {         
-            setListaProductos(data.data.Mensaje)           
+            setListaProductos(data.data)           
             console.log(listaProductos)            
         })
     }
 
 
     /* LOGICA DE ELIMINAR NUEVO PRODUCTO */
-    const [eliminarNuevoProducto, setEliminarNuevoProducto] = useState({
-        eliminar: "",
-    });
-
-    const actualizacionEliminarNuevoProducto = (value, campo) => {
-        setEliminarNuevoProducto({
-            ...eliminarNuevoProducto,
-            [campo]:value,
+    const eliminarProducto = (producto) => {
+        console.log(producto.codigo);
+        axios.delete("https://shopdevbackend.herokuapp.com/eliminarProducto/"+producto.codigo)
+        .then(respuesta =>{
         })
     }
 
-    const eliminarProducto = () => {
-        deleteNuevoProducto({...eliminarNuevoProducto});
+    /* LOGICA modificar PRODUCTO ADMIN */
+    const modificarProducto = (producto) => {
+        console.log(producto);
+        /* axios.put("https://shopdevbackend.herokuapp.com/modificarProducto" +producto)
+        .then(response =>{
+            console.log(response);
+        }
+        ) */
     }
+
+
+
+
+
+
+
+    /* LOGICA CREAR PRODUCTO ADMIN */
+
+    const creacionNuevoProducto = () => {
+        axios.post("https://shopdevbackend.herokuapp.com/modificarProducto", formValuesNuevoProducto)
+        .then(response => {
+            console.log(response);
+
+
+        })
+    }
+
+
+
+
+
+
+
+
+
 
 
 
@@ -125,13 +138,14 @@ export const MainAdminProductos = () => {
                                 
                             <tr>
                                 <th scope="row" ><img className="imgListaProducto" src={angularLogo} alt="angularLogo" /></th>
-                                <td>{}qq</td>
-                                <td>{}ww</td>
-                                <td>{}ee</td>
-                                <td>{}eOSI</td>
+                                <td>{producto.nombre}</td>
+                                <td>{producto.codigo}</td>
+                                <td>{producto.precio}</td>
+                                <td>{producto.cantidad}</td>
                                 <td>
-                                    <i class="fa-solid fa-trash-can" onClick={eliminarProducto()}></i>                                   
-                                    <i class="fa-solid fa-pencil"></i>
+                                    <i class="fa-solid fa-trash-can" onClick={()=>eliminarProducto(producto)}></i>                                   
+                                    <i class="fa-solid fa-pencil" onClick={()=>modificarProducto(producto)}
+                                    data-bs-toggle='modal' data-bs-target='#modal1'></i>
                                 </td>
                             </tr>
                                 
@@ -217,7 +231,7 @@ export const MainAdminProductos = () => {
                                     </form>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                                        <button type="button" class="btn btn-primary" onClick={_enviarNuevoProducto}>Crear</button>
+                                        <button type="button" class="btn btn-primary" onClick={creacionNuevoProducto}>Crear</button>
                                     </div>
                                 </div>
                             </div>
