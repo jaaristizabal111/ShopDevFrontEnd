@@ -16,6 +16,8 @@ export const MainAdminProductos = () => {
         getProductos();  
     }, [])
 
+    /*------------------------------------------------------------------------------------------------------------------------------*/
+
     /* LOGICA CONSUMO API NUEVO PRODUCTO */
     const [formValuesNuevoProducto, setFormValuesNuevoProducto] = useState({
         nombre: "",
@@ -26,7 +28,8 @@ export const MainAdminProductos = () => {
         talla: "",
         descripcion: "",
         imagen: "",
-    });
+    }
+    );
 
     const actualizacionFormNuevoProducto = (value, campo) => {
         setFormValuesNuevoProducto({
@@ -37,7 +40,6 @@ export const MainAdminProductos = () => {
 
     const _enviarNuevoProducto = () => {
         saveNuevoProducto({...formValuesNuevoProducto});
-        creacionNuevoProducto();
     }
 
     /* LOGICA DE LISTAR PRODUCTOS ADMIN API */
@@ -49,6 +51,69 @@ export const MainAdminProductos = () => {
         })
     }
 
+    /*------------------------------------------------------------------------------------------------------------------------------*/
+
+    /*modal nuevo producto para que se cree en la tabla con api*/
+    const [modalValuesNuevoProducto, setModalValuesNuevoProducto] = useState({
+        nombre:"",
+        precio:"",
+        cantidad:"",
+        categoria:"",
+        color:"",
+        talla:"",
+        descripcion:"",
+        imagen:"",
+    });
+    
+    const actualizacionModalNuevoProducto = (value, campo) => {
+        setModalValuesNuevoProducto({
+            ...modalValuesNuevoProducto,
+            [campo]:value,
+        })
+    };
+
+    const _enviarModalNuevoProducto = () => {
+        saveNuevoProducto({...modalValuesNuevoProducto});
+    }
+    
+    const agregarNuevoProducto = (producto) => {
+
+        axios.post("https://shopdevbackend.herokuapp.com/modificarProducto", productosNuevos)
+        .then(response => {
+             console.log("hola");
+        })
+
+        var productosNuevos = {
+            nombre: formValuesNuevoProducto.nombre,
+            precio: formValuesNuevoProducto.precio,
+            cantidad: formValuesNuevoProducto.cantidad,
+            categoria: formValuesNuevoProducto.categoria,
+            color: formValuesNuevoProducto.color,
+            talla: formValuesNuevoProducto.talla,
+            descripcion: formValuesNuevoProducto.descripcion,
+            imagen: formValuesNuevoProducto.imagen,
+        }
+       listaProductos.push(productosNuevos)
+       limpiarFormulario();
+    }
+
+    /*limpiar formulario */
+    const limpiarFormulario = () => {
+        setFormValuesNuevoProducto(
+            {
+                nombre: "",
+                precio: "",
+                cantidad: "",
+                categoria: "",
+                color: "",
+                talla: "",
+                descripcion: "",
+                imagen: "",
+            }
+        );
+    }
+
+    /*------------------------------------------------------------------------------------------------------------------------------*/
 
     /* LOGICA DE ELIMINAR NUEVO PRODUCTO */
     const eliminarProducto = (producto) => {
@@ -57,6 +122,8 @@ export const MainAdminProductos = () => {
         .then(respuesta =>{
         })
     }
+
+    /*------------------------------------------------------------------------------------------------------------------------------*/
 
     /* LOGICA modificar PRODUCTO ADMIN */
     const modificarProducto = (producto) => {
@@ -76,14 +143,14 @@ export const MainAdminProductos = () => {
 
     /* LOGICA CREAR PRODUCTO ADMIN */
 
-    const creacionNuevoProducto = () => {
+    /* const creacionNuevoProducto = () => {
         axios.post("https://shopdevbackend.herokuapp.com/modificarProducto", formValuesNuevoProducto)
         .then(response => {
-            console.log(response);
-
+            console.log("hola");
+            
 
         })
-    }
+    } */
 
 
 
@@ -231,7 +298,7 @@ export const MainAdminProductos = () => {
                                     </form>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                                        <button type="button" class="btn btn-primary" onClick={creacionNuevoProducto}>Crear</button>
+                                        <button type="button" class="btn btn-primary" onClick={()=>agregarNuevoProducto()}>Crear</button>
                                     </div>
                                 </div>
                             </div>
