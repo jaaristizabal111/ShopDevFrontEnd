@@ -1,5 +1,6 @@
 import axios, { Axios } from 'axios'
 import React from 'react';
+import { useState } from 'react/cjs/react.production.min';
 
 export default class servicioShopdev extends React.Component {
     getProductos() { }
@@ -7,7 +8,9 @@ export default class servicioShopdev extends React.Component {
 }
 
 /* PARA nuevo producto */
-export async function saveNuevoProducto(registroData) {
+export async function guardarNuevoProducto(registroData) {
+    
+
     var response;
     try {
         console.log(registroData);
@@ -21,7 +24,11 @@ export async function saveNuevoProducto(registroData) {
         formData.append('talla', registroData.talla)
         formData.append('descripcion', registroData.descripcion)
         formData.append('imagen', registroData.imagen)
-        formData.append('tallaje', registroData.tallaje)
+
+
+
+
+        console.log(formData);
 
         response = await axios({
             url: `https://shopdevbackend.herokuapp.com/nuevoProducto`,

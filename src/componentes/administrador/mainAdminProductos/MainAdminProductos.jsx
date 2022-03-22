@@ -1,4 +1,4 @@
-import { saveNuevoProducto } from "../../../services/servicioShopdev";
+import { guardarNuevoProducto } from "../../../services/servicioShopdev";
 import axios, { Axios } from 'axios'
 import './MainAdminProductos.css';
 import React, { useEffect } from "react";
@@ -9,7 +9,10 @@ import  angularLogo  from "../../../assets/img/AngularLogo.jpg"
 
 export const MainAdminProductos = () => {
 
+
     const [listaProductos, setListaProductos] = useState([]);
+    const [fotoProducto, setFotoProducto] = useState();
+    
 
     /* LO PRIMERO QUE SE VA A EJECUTAR */
     useEffect(() => {
@@ -27,7 +30,6 @@ export const MainAdminProductos = () => {
         color: "",
         talla: "",
         descripcion: "",
-        imagen: "",
     }
     );
 
@@ -37,10 +39,6 @@ export const MainAdminProductos = () => {
             [campo]:value,
         })
     };
-
-    const _enviarNuevoProducto = () => {
-        saveNuevoProducto({...formValuesNuevoProducto});
-    }
 
     /* LOGICA DE LISTAR PRODUCTOS ADMIN API */
     const getProductos = () => {
@@ -52,38 +50,9 @@ export const MainAdminProductos = () => {
     }
 
     /*------------------------------------------------------------------------------------------------------------------------------*/
-
-    /*modal nuevo producto para que se cree en la tabla con api*/
-    const [modalValuesNuevoProducto, setModalValuesNuevoProducto] = useState({
-        nombre:"",
-        precio:"",
-        cantidad:"",
-        categoria:"",
-        color:"",
-        talla:"",
-        descripcion:"",
-        imagen:"",
-    });
-    
-    const actualizacionModalNuevoProducto = (value, campo) => {
-        setModalValuesNuevoProducto({
-            ...modalValuesNuevoProducto,
-            [campo]:value,
-        })
-    };
-
-    const _enviarModalNuevoProducto = () => {
-        saveNuevoProducto({...modalValuesNuevoProducto});
-    }
-    
-    const agregarNuevoProducto = (producto) => {
-
-        axios.post("https://shopdevbackend.herokuapp.com/modificarProducto", productosNuevos)
-        .then(response => {
-             console.log("hola");
-        })
-
-        var productosNuevos = {
+ 
+    const agregarNuevoProducto = () => {
+        var productoNuevo = {
             nombre: formValuesNuevoProducto.nombre,
             precio: formValuesNuevoProducto.precio,
             cantidad: formValuesNuevoProducto.cantidad,
@@ -91,10 +60,13 @@ export const MainAdminProductos = () => {
             color: formValuesNuevoProducto.color,
             talla: formValuesNuevoProducto.talla,
             descripcion: formValuesNuevoProducto.descripcion,
-            imagen: formValuesNuevoProducto.imagen,
+            imagen: fotoProducto,
         }
-       listaProductos.push(productosNuevos)
+       listaProductos.push(productoNuevo);
+       guardarNuevoProducto(productoNuevo);
        limpiarFormulario();
+      // console.log(productosNuevos);
+       
     }
 
     /*limpiar formulario */
@@ -139,18 +111,6 @@ export const MainAdminProductos = () => {
 
 
 
-
-
-    /* LOGICA CREAR PRODUCTO ADMIN */
-
-    /* const creacionNuevoProducto = () => {
-        axios.post("https://shopdevbackend.herokuapp.com/modificarProducto", formValuesNuevoProducto)
-        .then(response => {
-            console.log("hola");
-            
-
-        })
-    } */
 
 
 
@@ -204,7 +164,7 @@ export const MainAdminProductos = () => {
                              {listaProductos.map( producto => (
                                 
                             <tr>
-                                <th scope="row" ><img className="imgListaProducto" src={angularLogo} alt="angularLogo" /></th>
+                                <th scope="row" ><img className="imgListaProducto" src={producto.imagenes} alt="angularLogo" /></th>
                                 <td>{producto.nombre}</td>
                                 <td>{producto.codigo}</td>
                                 <td>{producto.precio}</td>
@@ -292,7 +252,7 @@ export const MainAdminProductos = () => {
                                     </div> 
                                     <div class="modal-body">
                                         <h5 class="modal-title">Imagenes del producto</h5>
-                                        <input type="file" accept="image/jpg, image/png" id='miArchivo' name='imagen' /* value={formValuesNuevoProducto} onChange={({ target }) => actualizacionFormNuevoProducto(target.value, "imagen")} *//>
+                                        <input type="file" accept="image/jpg, image/png" id='miArchivo' name='file' onChange={(e) => { setFotoProducto(e.target.files[0])}}/>
                                         
                                     </div>
                                     </form>
