@@ -1,14 +1,14 @@
 import React from 'react';
 import { Header } from '../header/Header';
 import { Footer } from '../footer/Footer';
-import java from '../../../assets/img/java.jpg'
-import ReactLi from '../../../assets/img/ReactLi.png'
+import { MainSelectProducto } from '../mainSelectProducto/MainSelectProducto';
+
 
 export const ContenidoVentanaProducto = () => {
     return (
         <>
             <Header></Header>
-            
+            <MainSelectProducto></MainSelectProducto>
             <Footer></Footer>
         </>
     )

@@ -4,7 +4,6 @@ import { useState } from 'react/cjs/react.production.min';
 
 export default class servicioShopdev extends React.Component {
     getProductos() { }
-    
 }
 
 /* PARA nuevo producto */

@@ -1,7 +1,10 @@
-import './MainTienda.css';
+import './MainSelectProducto.css';
+import React from 'react';
+import java from '../../../assets/img/java.jpg'
+import ReactLi from '../../../assets/img/ReactLi.png'
 
 
-export const MainTienda = () => {
+export const MainSelectProducto = () => {
     return(
         <>
         <main class="main">

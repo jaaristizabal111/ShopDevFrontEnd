@@ -3,12 +3,10 @@ import axios, { Axios } from 'axios'
 import './MainAdminProductos.css';
 import React, { useEffect } from "react";
 import { useState } from "react";
-import  angularLogo  from "../../../assets/img/AngularLogo.jpg"
-
 
 
 export const MainAdminProductos = () => {
-
+    const [msgModalProducto, setmsgModalProducto] = useState([]);
 
     const [listaProductos, setListaProductos] = useState([]);
     const [fotoProducto, setFotoProducto] = useState();
@@ -43,7 +41,7 @@ export const MainAdminProductos = () => {
     /* LOGICA DE LISTAR PRODUCTOS ADMIN API */
     const getProductos = () => {
         axios.get("https://shopdevbackend.herokuapp.com/homeProductos")
-        .then( data => {         
+        .then(data => {         
             setListaProductos(data.data)           
             console.log(listaProductos)            
         })
@@ -65,8 +63,19 @@ export const MainAdminProductos = () => {
        listaProductos.push(productoNuevo);
        guardarNuevoProducto(productoNuevo);
        limpiarFormulario();
-      // console.log(productosNuevos);
-       
+       /* console.log("AGREGO"); */
+    }
+
+    const agregarEditarProducto = () => {
+        if (msgModalProducto === "Crear") {
+            agregarNuevoProducto();
+        } else if (msgModalProducto === "Editar"){
+            editar();
+        }
+    }
+
+    const tituloModalNuevoProducto = (txtModal) =>{
+        setmsgModalProducto(txtModal) ;
     }
 
     /*limpiar formulario */
@@ -98,13 +107,19 @@ export const MainAdminProductos = () => {
     /*------------------------------------------------------------------------------------------------------------------------------*/
 
     /* LOGICA modificar PRODUCTO ADMIN */
-    const modificarProducto = (producto) => {
+
+    const setearProductoAModificar = (producto,txtModal) => {
+        setmsgModalProducto(txtModal) ;
+
         console.log(producto);
-        /* axios.put("https://shopdevbackend.herokuapp.com/modificarProducto" +producto)
-        .then(response =>{
-            console.log(response);
-        }
-        ) */
+        setFormValuesNuevoProducto(producto);
+        axios.put("https://shopdevbackend.herokuapp.com/modificarProducto", producto)
+        .then(response =>{   
+        })
+    }
+
+    const editar = () => {
+        console.log("siiiiiiii");
     }
 
 
@@ -139,12 +154,12 @@ export const MainAdminProductos = () => {
 
     return (
         <>
-        <main>
+        
             {/* CONTAINER DE ADMIN PRODUCTOS */}
                 <div className='container'>
                     <div className='containerTitulo'>
                         <h2><i className="fa-solid fa-box-circle-check"></i> Mis Productos</h2>
-                        <button type="button" class="btn btn-light" data-bs-toggle='modal' data-bs-target='#modal1'>Nuevo Producto</button>
+                        <button type="button" class="btn btn-light" data-bs-toggle='modal' data-bs-target='#modalProducto'onClick={()=>tituloModalNuevoProducto("Crear")}>Nuevo Producto</button>
                     </div>
 
                     {/* TABLA DE PRODUCTOS */}
@@ -164,15 +179,14 @@ export const MainAdminProductos = () => {
                              {listaProductos.map( producto => (
                                 
                             <tr>
-                                <th scope="row" ><img className="imgListaProducto" src={producto.imagenes} alt="angularLogo" /></th>
+                                <th scope="row" ><img className="imgListaProducto" src={producto.imagenes} alt="N/A" /></th>
                                 <td>{producto.nombre}</td>
                                 <td>{producto.codigo}</td>
                                 <td>{producto.precio}</td>
                                 <td>{producto.cantidad}</td>
                                 <td>
                                     <i class="fa-solid fa-trash-can" onClick={()=>eliminarProducto(producto)}></i>                                   
-                                    <i class="fa-solid fa-pencil" onClick={()=>modificarProducto(producto)}
-                                    data-bs-toggle='modal' data-bs-target='#modal1'></i>
+                                    <i class="fa-solid fa-pencil" data-bs-toggle='modal' data-bs-target='#modalProducto' onClick={()=>setearProductoAModificar(producto,"Editar")}></i>
                                 </td>
                             </tr>
                                 
@@ -181,12 +195,14 @@ export const MainAdminProductos = () => {
                     </table>
                 </div>
 
+    {/*------------------------------------------------------------------------------------------------------------------------------*/}
+
                 {/* MODAL NUEVO PRODUCTO */}
-                <div className="modal" tabindex="-1" id='modal1'>
+                <div className="modal" tabindex="-1" id='modalProducto'>
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header"> 
-                                        <h5 class="modal-title">Nuevo Producto</h5>  
+                                        <h5 class="modal-title">{msgModalProducto} Producto</h5> 
                                     </div>
                                     <div class="modal-body">
                                         <h5 class="modal-title">Informacion General</h5>
@@ -258,12 +274,17 @@ export const MainAdminProductos = () => {
                                     </form>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                                        <button type="button" class="btn btn-primary" onClick={()=>agregarNuevoProducto()}>Crear</button>
-                                    </div>
+                                        <button type="button" class="btn btn-primary" onClick={()=>agregarEditarProducto()}>{msgModalProducto}</button>
+                                    </div> 
                                 </div>
                             </div>
                 </div>
-        </main>
+
+    {/*------------------------------------------------------------------------------------------------------------------------------*/}
+
+    
+    {/*------------------------------------------------------------------------------------------------------------------------------*/}
+
         </>
     )
 }
