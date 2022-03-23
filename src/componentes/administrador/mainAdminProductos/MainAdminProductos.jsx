@@ -1,4 +1,4 @@
-import { guardarNuevoProducto } from "../../../services/servicioShopdev";
+import { guardarNuevoProducto, modificarProducto } from "../../../services/servicioShopdev";
 import axios, { Axios } from 'axios'
 import './MainAdminProductos.css';
 import React, { useEffect } from "react";
@@ -28,6 +28,7 @@ export const MainAdminProductos = () => {
         color: "",
         talla: "",
         descripcion: "",
+        codigo:""
     }
     );
 
@@ -48,31 +49,6 @@ export const MainAdminProductos = () => {
     }
 
     /*------------------------------------------------------------------------------------------------------------------------------*/
- 
-    const agregarNuevoProducto = () => {
-        var productoNuevo = {
-            nombre: formValuesNuevoProducto.nombre,
-            precio: formValuesNuevoProducto.precio,
-            cantidad: formValuesNuevoProducto.cantidad,
-            categoria: formValuesNuevoProducto.categoria,
-            color: formValuesNuevoProducto.color,
-            talla: formValuesNuevoProducto.talla,
-            descripcion: formValuesNuevoProducto.descripcion,
-            imagen: fotoProducto,
-        }
-       listaProductos.push(productoNuevo);
-       guardarNuevoProducto(productoNuevo);
-       limpiarFormulario();
-       /* console.log("AGREGO"); */
-    }
-
-    const agregarEditarProducto = () => {
-        if (msgModalProducto === "Crear") {
-            agregarNuevoProducto();
-        } else if (msgModalProducto === "Editar"){
-            editar();
-        }
-    }
 
     const tituloModalNuevoProducto = (txtModal) =>{
         setmsgModalProducto(txtModal) ;
@@ -101,6 +77,7 @@ export const MainAdminProductos = () => {
         console.log(producto.codigo);
         axios.delete("https://shopdevbackend.herokuapp.com/eliminarProducto/"+producto.codigo)
         .then(respuesta =>{
+            getProductos();
         })
     }
 
@@ -113,29 +90,56 @@ export const MainAdminProductos = () => {
 
         console.log(producto);
         setFormValuesNuevoProducto(producto);
-        axios.put("https://shopdevbackend.herokuapp.com/modificarProducto", producto)
-        .then(response =>{   
-        })
+      
+    }
+
+    const agregarNuevoProducto = () => {
+        var productoNuevo = {
+            nombre: formValuesNuevoProducto.nombre,
+            precio: formValuesNuevoProducto.precio,
+            cantidad: formValuesNuevoProducto.cantidad,
+            categoria: formValuesNuevoProducto.categoria,
+            color: formValuesNuevoProducto.color,
+            talla: formValuesNuevoProducto.talla,
+            descripcion: formValuesNuevoProducto.descripcion,
+            imagen: fotoProducto,
+        }
+       guardarNuevoProducto(productoNuevo).then(a=>{
+              getProductos();
+       limpiarFormulario();
+       });
+    
+       
+       /* console.log("AGREGO"); */
+    }
+
+    const agregarEditarProducto = () => {
+    
+        if (msgModalProducto === "Crear") {
+            agregarNuevoProducto();
+        } else if (msgModalProducto === "Editar"){
+            editar();
+        }
     }
 
     const editar = () => {
-        console.log("siiiiiiii");
+        var productoModificado = {
+            codigo:formValuesNuevoProducto.codigo,
+            nombre: formValuesNuevoProducto.nombre,
+            precio: formValuesNuevoProducto.precio,
+            cantidad: formValuesNuevoProducto.cantidad,
+            categoria: formValuesNuevoProducto.categoria,
+            color: formValuesNuevoProducto.color,
+            talla: formValuesNuevoProducto.talla,
+            descripcion: formValuesNuevoProducto.descripcion,
+            imagen: fotoProducto,
+        }
+        console.log(productoModificado);
+        modificarProducto(productoModificado).then(()=>{
+                  getProductos();
+  
+        });
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

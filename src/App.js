@@ -11,6 +11,7 @@ import { Notificaciones } from './componentes/administrador/notificaciones/Notif
 import { ContenidoPrincipalProductos } from './componentes/cliente/contenidoPrincipalProductos/ContenidoPrincipalProductos'
 import { ContenidoVentanaProducto } from './componentes/cliente/contenidoVentanaProducto/ContenidoVentanaProducto'
 import { HomeUsuario } from './componentes/cliente/homeUsuario/HomeUsuario'
+import { ContenidoPago } from './componentes/cliente/contenidoPago/ContenidoPago'
 
 
 const App = () => {
@@ -28,6 +29,7 @@ const App = () => {
           <Route path="cliente/listaproductos" exact element={<ContenidoPrincipalProductos />} />
           <Route path='cliente/compraproductos' exact element={<ContenidoVentanaProducto />} />
           <Route path="/" exact element={<HomeUsuario />} />
+          <Route path='cliente/pago' exact element ={<ContenidoPago/>} />
 
         </Routes>
       </BrowserRouter >

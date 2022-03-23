@@ -26,13 +26,21 @@ export const Login = () => {
     };
 
     const iniciarSesion = () => {
+        
         axios.post("https://shopdevbackend.herokuapp.com/login", formValuesLogin)
         .then(response => {
             console.log(response);
+            if (response.data.rol === 1) {
+                goToHomeCliente();
+            } else if(response.data.rol === 2){
+                goToAdminProductos();
+            }
+            console.log(response);
         })
+
     };
 
- 
+    /* --------------------------------------------------------------------------------------------------------------- */
 
     /* formulario con valores REGISTRO*/
     const [formValuesRegistro, setformValuesRegistro] = useState({
@@ -62,6 +70,16 @@ export const Login = () => {
         })
     }
 
+    /* --------------------------------------------------------------------------------------------------------------- */
+
+    
+
+
+
+
+
+
+
     return (
         <React.Fragment> 
             {/* FONDO LOGIN-IMG */}
@@ -73,7 +91,7 @@ export const Login = () => {
                     <div>
                         {/* FORMULARIO LOGIN */}
                         <form className="input-group ">
-                            <input type="text" className="form-control" name="correo"
+                            <input type="text" className="form-control" name="correo" 
                             value={formValuesLogin.correo} onChange={({ target }) =>
                             actualizacionForm(target.value, "correo")}
                             placeholder="Correo" aria-describedby="basic-addon1"
@@ -98,7 +116,7 @@ export const Login = () => {
                         <button
                             type="button"
                             className="mt-5 btn btn-lg  btn-fondo"
-                            onClick={iniciarSesion}
+                            onClick={()=>iniciarSesion()}
                             style={{ width: "-webkitFillAvailable 19em" }}>
                             Ingresar
                         </button>
@@ -187,11 +205,11 @@ export const Login = () => {
 
     {/* FUNCIONES DE RUTAS */ }
     function goToHomeCliente() {
-        let ruta = "/cliente/home";
+        let ruta = "/cliente/listaproductos";
         navigate(ruta);
     }
     
-    function goToAdminProductos() {
+    function goToAdminProductos() { 
         let ruta = "/admin/productos";
         navigate(ruta);
     }

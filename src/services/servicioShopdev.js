@@ -24,9 +24,6 @@ export async function guardarNuevoProducto(registroData) {
         formData.append('descripcion', registroData.descripcion)
         formData.append('imagen', registroData.imagen)
 
-
-
-
         console.log(formData);
 
         response = await axios({
@@ -41,5 +38,36 @@ export async function guardarNuevoProducto(registroData) {
     }
 }
 
+export async function modificarProducto(dataModificar) {
+    
+
+    var response;
+    try {
+        console.log(dataModificar);
+        const formData = new FormData()
+
+        formData.append('nombre', dataModificar.nombre)
+        formData.append('precio', dataModificar.precio)
+        formData.append('cantidad', dataModificar.cantidad)
+        formData.append('categoria', dataModificar.categoria)
+        formData.append('color', dataModificar.color)
+        formData.append('talla', dataModificar.talla)
+        formData.append('descripcion', dataModificar.descripcion)
+        formData.append('imagen', dataModificar.imagen)
+
+        console.log(formData);
+
+        response = await axios({
+            url: "https://shopdevbackend.herokuapp.com/modificarProducto/"+dataModificar.codigo,
+            method: 'PUT',
+            data: formData,
+            
+        })
+
+        return response
+    } catch (e) {
+        console.log(e)
+    }
+}
 
 

@@ -1,8 +1,8 @@
 /* MAIN */
-.main{
+.contenedorPadre{
     display: flex;
     justify-content: center;
-    height: 33em;
+    
   }
   
   /* <!-- MENU DESPLEGABLE --> */
@@ -25,7 +25,7 @@
   .mainContainerLateral{
     background-color: #F2F2F2;
     width: 20em;
-    height: 32em;
+    height: 39em;
     display: flex;
     flex-direction: column;
     align-items: flex-start;

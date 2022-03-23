@@ -15,8 +15,8 @@ export const Header = () => {
                     <div className="separador"></div>
                     <label htmlFor="">Tienda</label>
                     <div><img className="LogoPrincipal" src={LogoPrincipal} alt="LogoPrincipal"></img></div>
-                    <div><i className="fas fa-user-alt colorIcono" onClick={goToIconCliente}></i></div>
-                    <div><i className="fas fa-shopping-bag colorIcono"></i></div>
+                    <div><i className="fas fa-user-alt colorIcono"></i></div>
+                    <div><i className="fas fa-shopping-bag colorIcono" onClick={goToIconCliente}></i></div>
                     <div className="separador"></div>
                     <input type="text" placeholder="Buscar" />
                 </header> 
