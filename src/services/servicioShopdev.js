@@ -35,7 +35,7 @@ export async function guardarNuevoProducto(registroData) {
         return response
     } catch (e) {
         console.log(e)
-    }
+    } 
 }
 
 export async function modificarProducto(dataModificar) {

@@ -27,7 +27,7 @@ export const MainSelectProducto = () => {
                                 <button class="btn btn-secondary containerTallas" type="button" style={{background:'#d6d6d6'}}>M</button>
                                 <button class="btn btn-secondary containerTallas" type="button" style={{background:'#d6d6d6'}}>L</button>
                                 <button class="btn btn-secondary containerTallas" type="button" style={{background:'#d6d6d6'}}>XL</button>
-                                <a href="#" className='containerTallas'>¿Cual es mi talla?</a>
+                                <a href="/." className='containerTallas'>¿Cual es mi talla?</a>
                             </div>
                         </div>
                         <div class="containerDer2">

@@ -1,10 +1,9 @@
 import "./Login.css";
 import React from "react";
 import { useState } from "react";
-import { saveRegistro } from "../../services/servicioShopdev";
 import { useNavigate } from 'react-router-dom';
 import axios from "axios";
-import { useEffect } from "react";
+
 
 
 export const Login = () => {

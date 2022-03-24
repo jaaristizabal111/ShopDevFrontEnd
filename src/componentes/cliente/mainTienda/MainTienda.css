@@ -2,7 +2,6 @@
 .contenedorPadre{
     display: flex;
     justify-content: center;
-    
   }
   
   /* <!-- MENU DESPLEGABLE --> */
@@ -20,12 +19,13 @@
   
   .letraMainContainerLateral{
     color: black;
-    margin-top: 13px
+    margin-top: 13px;
+    margin-left: 15px;
   }
   .mainContainerLateral{
     background-color: #F2F2F2;
     width: 20em;
-    height: 39em;
+    height: 36em;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -34,9 +34,13 @@
   }
   .mainContainerDer{
     margin-left: 4em;
-     width: 71em;
-     display: flex;
-     flex-direction: column;
+     width: 20em;
+
+  }
+  .d-flex{
+    display: flex!important;
+    flex-wrap: wrap;
+    align-content: center;
   }
   .mainContainerArriba{
     height: 25em; 
@@ -52,18 +56,18 @@
      display: flex;
      align-items: center;
      width: 22em;
-     height: 15em;
-     justify-content: center;
+     height: 18em;
      flex-direction: column;
      justify-content: space-around;
+     margin-top: 15px;
   }
+  
   .cardDescripcion{
     text-align: center;
   }
   .imgCards{
     width: 17em;
-    height: 10em;
-    /* background-image: url("img/sacoReact.jpg"); */
+    height: 12em;
     background-size: 100%;
     background-repeat: no-repeat;
   }
