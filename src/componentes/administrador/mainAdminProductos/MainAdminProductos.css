@@ -1,12 +1,10 @@
 .container{
-  margin-top: 20em;
   height: 31em;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   position: relative;
-  left: 0em;
-  top: 2em;
+  font-family: 'Marcellus', serif;
 }
 .containerTitulo{
   display: flex;
@@ -31,3 +29,15 @@ width: 10em;
   width: 4em;
   height: 2em;
 }
+
+table{
+  margin-bottom: 7em;
+  border: 0.1em rgb(180, 177, 177) solid;
+  box-shadow: 0px -1px 10px 2px #404041;
+  text-align: center;
+}
+.tituloTabla{
+  color: rgb(70, 70, 70);
+}
+
+

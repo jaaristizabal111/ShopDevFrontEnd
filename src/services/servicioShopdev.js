@@ -8,8 +8,6 @@ export default class servicioShopdev extends React.Component {
 
 /* PARA nuevo producto */
 export async function guardarNuevoProducto(registroData) {
-    
-
     var response;
     try {
         console.log(registroData);
@@ -38,9 +36,9 @@ export async function guardarNuevoProducto(registroData) {
     } 
 }
 
-export async function modificarProducto(dataModificar) {
-    
 
+
+export async function modificarProducto(dataModificar) {
     var response;
     try {
         console.log(dataModificar);

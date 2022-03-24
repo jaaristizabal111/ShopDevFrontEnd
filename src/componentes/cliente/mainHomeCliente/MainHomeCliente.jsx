@@ -12,7 +12,10 @@ export const MainHomeCliente = () => {
     return (
         <>
             {/* MAIN HOME CLIENTE */}
-            <div className="row">
+            
+
+            
+            <div className="row ">
                 <div class="col-lg-4 col-md-12 mb-4 mb-lg-0">
                     <img
                         src={codigo}
@@ -55,6 +58,7 @@ export const MainHomeCliente = () => {
                     />
                 </div>
             </div> 
+            
         </>
     )
 }

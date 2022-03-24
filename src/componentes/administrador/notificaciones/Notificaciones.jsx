@@ -8,7 +8,7 @@ export const Notificaciones = () => {
         <>
             <HeaderAdmin></HeaderAdmin>
             <BarraLateral></BarraLateral>
-            <main>
+            
                 <h1>NOTIFICACIONES</h1>
 
                 
@@ -19,7 +19,7 @@ export const Notificaciones = () => {
                     <button>Call to action</button>
                 </div>
 
-            </main>
+            
         </>
     )
 }

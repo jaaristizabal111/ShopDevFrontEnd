@@ -164,11 +164,11 @@ export const MainAdminProductos = () => {
                     <div className='containerTitulo'>
                         <h2><i className="fa-solid fa-box-circle-check"></i> Mis Productos</h2>
                         <button type="button" class="btn btn-light" data-bs-toggle='modal' data-bs-target='#modalProducto'onClick={()=>tituloModalNuevoProducto("Crear")}>Nuevo Producto</button>
-                    </div>
+                    </div> 
 
                     {/* TABLA DE PRODUCTOS */}
-                    <table class="table">
-                        <thead>
+                    <table>
+                        <thead className="tituloTabla">
                             <tr>
                                 <th scope="col">IMAGEN</th>
                                 <th scope="col">NOMBRE</th>
