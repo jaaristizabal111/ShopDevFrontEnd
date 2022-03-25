@@ -188,7 +188,7 @@ export const MainAdminProductos = () => {
                                 <td>{producto.codigo}</td>
                                 <td>{producto.precio}</td>
                                 <td>{producto.cantidad}</td>
-                                <td>
+                                <td className="distIconos">
                                     <i class="fa-solid fa-trash-can" onClick={()=>eliminarProducto(producto)}></i>                                   
                                     <i class="fa-solid fa-pencil" data-bs-toggle='modal' data-bs-target='#modalProducto' onClick={()=>setearProductoAModificar(producto,"Editar")}></i>
                                 </td>
@@ -232,11 +232,11 @@ export const MainAdminProductos = () => {
                                         <div class="modal-body">
                                             <p>Categoria</p>
                                             <select name="categoria" value={formValuesNuevoProducto.categoria} onChange={({ target }) => actualizacionFormNuevoProducto(target.value, "categoria")}>
-                                            <option value="camisetas">Camisetas</option>
-                                            <option value="vasos" selected>Vasos</option>
-                                            <option value="buzos">Buzos</option>
+                                            <option value="camisetas">Camiseta</option>
+                                            <option value="vasos" selected>Buzo</option>
+                                            <option value="buzos">Vaso</option>
                                             <option value="Gorra">Gorra</option>
-                                            <option value="Termos">Termos</option>
+                                            <option value="Termos">Botella</option>
                                             </select>
                                         </div> 
                                     </div>
