@@ -16,7 +16,10 @@
 
 .icon-barra {
   color: white;
+  margin-left: 22px;
+    width: 37px;
 }
+
 
 .main-menu:hover,
 nav.main-menu.expanded {

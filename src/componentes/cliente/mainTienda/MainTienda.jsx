@@ -2,9 +2,14 @@ import "./MainTienda.css";
 import React from "react";
 import axios, { Axios } from "axios";
 import { useState } from "react";
+import { useNavigate } from 'react-router-dom';
 import { useEffect } from "react";
 
 export const MainTienda = () => {
+
+  /* NECESARIO PARA EL FLUJO ENTRE RUTAS */
+  const navigate = useNavigate();
+
   const [listaProductos, setListaProductos] = useState([]);
 
   /* LO PRIMERO QUE SE VA A EJECUTAR */
@@ -74,11 +79,14 @@ export const MainTienda = () => {
             <div class="mainContainerDer">
               <div class="cards col-6 hijoCards">
                 <div>
-                  <img
+                  <a href="">
+                    <img
+                  onClick={()=>goToSelectProducto()}
                     class="imgCards"
                     src={producto.imagenes}
                     alt="sacoReact"
                   />
+                  </a>
                 </div>
                 <div class="cardDescripcion">
                   <h6 class="letraCardDescripcion">{producto.nombre}</h6>
@@ -91,4 +99,8 @@ export const MainTienda = () => {
       </div>
     </>
   );
+  function goToSelectProducto() {
+    let ruta = "/cliente/compraproductos";
+    navigate(ruta);
+}
 };

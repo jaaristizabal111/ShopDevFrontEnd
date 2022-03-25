@@ -7,8 +7,8 @@ export const MainAdminPedidos = () => {
         <>
           <main>
                 <div className='container'>
-                <h1>PEDIDOS</h1>                
-                <table class="table">
+                <h1>PEDIDOS</h1>
+                <table className="table">
                     <thead>
                         <tr>
                             <th scope="col"># ORDEN</th>
@@ -45,6 +45,17 @@ export const MainAdminPedidos = () => {
                             <td>Otto</td>
                             <td>@mdo</td>
                             <td>@mdo</td>
+                            <td>
+                                <select name="" id="">
+                                    <option value="">Pendiente</option>
+                                    <option value="">Finalizado</option>
+                                    <option value="">En proceso</option>
+                                </select>
+                            </td>
+                            <td>
+                                <i class="fa-solid fa-trash-can"></i>
+                                <i class="fa-solid fa-pencil"></i>
+                            </td>
                         </tr>
                         <tr>
                             <th scope="row">3</th>
@@ -52,6 +63,17 @@ export const MainAdminPedidos = () => {
                             <td>Otto</td>
                             <td>@mdo</td>
                             <td>@mdo</td>
+                            <td>
+                                <select name="" id="">
+                                    <option value="">Pendiente</option>
+                                    <option value="">Finalizado</option>
+                                    <option value="">En proceso</option>
+                                </select>
+                            </td>
+                            <td>
+                                <i class="fa-solid fa-trash-can"></i>
+                                <i class="fa-solid fa-pencil"></i>
+                            </td>
                         </tr>
                     </tbody>
                 </table>

@@ -30,7 +30,8 @@ export const BarraLateral = () => {
                     <li className="has-subnav mt-4">
                         <a>
                         {/* <i className=" fa fa-solid icon-barra fa-cart-flatbed-boxes fa-2x" ></i> */}
-                        <i class="fa fa-solid fa-bell-on icon-barra fa-x2"></i>
+                        <i className="fas fa-shopping-bag icon-barra fa-x2"></i>
+                        {/* <i class="fa fa-solid fa-bell-on icon-barra fa-x2"></i> */}
                             <span className="nav-text" onClick={goToAdminProductos}>
                                 Productos
                             </span>
@@ -38,7 +39,7 @@ export const BarraLateral = () => {
                     </li>
                     <li className="has-subnav mt-4">
                         <a>
-                        <i className="fa fa-solid icon-barra fa-bell-on fa-2x"></i>
+                        <i class="fa-solid fa-bells icon-barra "></i>
                             <span className="nav-text">
                                 Notificaciones
                             </span>
