@@ -36,7 +36,7 @@ export const MainAdminPedidos = () => {
                             </td>
                             <td>
                                 <i class="fa-solid fa-trash-can"></i>
-                                <i class="fa-solid fa-pencil"></i>
+                    
                             </td>
                         </tr>
                         <tr>
@@ -54,7 +54,7 @@ export const MainAdminPedidos = () => {
                             </td>
                             <td>
                                 <i class="fa-solid fa-trash-can"></i>
-                                <i class="fa-solid fa-pencil"></i>
+                                
                             </td>
                         </tr>
                         <tr>
@@ -72,7 +72,7 @@ export const MainAdminPedidos = () => {
                             </td>
                             <td>
                                 <i class="fa-solid fa-trash-can"></i>
-                                <i class="fa-solid fa-pencil"></i>
+                                
                             </td>
                         </tr>
                     </tbody>

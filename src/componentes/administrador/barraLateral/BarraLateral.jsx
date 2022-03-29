@@ -14,7 +14,7 @@ export const BarraLateral = () => {
                 <ul>
                     {/* icono blanco redondo / todos los iconos de la barra lateral */}
                     <li>
-                        <a href="http://justinfarrow.com">
+                        <a href="" onClick={goToHomeUsuario}>
                             <img className='logoIsotipo'  src={Isotipo} alt="Isotipo" />
                         </a>
                         <hr style={{ backgroundColor: 'white' }}></hr>
@@ -56,6 +56,10 @@ export const BarraLateral = () => {
     }
     function goToAdminProductos() {
         let ruta = "/admin/productos";        
+        navigate(ruta);
+    }
+    function goToHomeUsuario() {
+        let ruta = "/";
         navigate(ruta);
     }
 }

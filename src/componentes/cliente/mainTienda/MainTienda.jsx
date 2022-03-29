@@ -4,6 +4,7 @@ import axios, { Axios } from "axios";
 import { useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from "react";
+import { Link } from "react-router-dom";
 
 export const MainTienda = () => {
 
@@ -77,11 +78,12 @@ export const MainTienda = () => {
         <div class="d-flex">
           {listaProductos.map((producto) => (
             <div class="mainContainerDer">
+              <Link to={`/cliente/listaproductos/${producto.codigo}`}>
               <div class="cards col-6 hijoCards">
                 <div>
                   <a href="">
                     <img
-                  onClick={()=>goToSelectProducto()}
+                  
                     class="imgCards"
                     src={producto.imagenes}
                     alt="sacoReact"
@@ -91,16 +93,17 @@ export const MainTienda = () => {
                 <div class="cardDescripcion">
                   <h6 class="letraCardDescripcion">{producto.nombre}</h6>
                   <h6 class="letraCardDescripcion">{producto.precio}</h6>
-                </div>
               </div>
+              </div>
+              </Link>
+                  
+                
+              
             </div>
           ))}
         </div>
       </div>
     </>
   );
-  function goToSelectProducto() {
-    let ruta = "/cliente/compraproductos";
-    navigate(ruta);
-}
+  
 };

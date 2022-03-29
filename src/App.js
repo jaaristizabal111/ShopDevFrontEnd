@@ -27,7 +27,7 @@ const App = () => {
 
           {/* CLIENTE */}
           <Route path="cliente/listaproductos" exact element={<ContenidoPrincipalProductos />} />
-          <Route path='cliente/compraproductos' exact element={<ContenidoVentanaProducto />} />
+          <Route path="cliente/listaproductos/:codigo" exact element={<ContenidoVentanaProducto />} />
           <Route path="/" exact element={<HomeUsuario />} />
           <Route path='cliente/pago' exact element ={<ContenidoPago/>} />
 

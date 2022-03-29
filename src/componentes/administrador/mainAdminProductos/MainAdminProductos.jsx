@@ -87,10 +87,8 @@ export const MainAdminProductos = () => {
 
     const setearProductoAModificar = (producto,txtModal) => {
         setmsgModalProducto(txtModal) ;
-
         console.log(producto);
         setFormValuesNuevoProducto(producto);
-      
     }
 
     const agregarNuevoProducto = () => {
@@ -272,8 +270,7 @@ export const MainAdminProductos = () => {
                                     </div> 
                                     <div class="modal-body">
                                         <h5 class="modal-title">Imagenes del producto</h5>
-                                        <input type="file" accept="image/jpg, image/png" id='miArchivo' name='file' onChange={(e) => { setFotoProducto(e.target.files[0])}}/>
-                                        
+                                        <input type="file" accept="image/jpg, image/png" id='miArchivo' name='file' onChange={(e) => { setFotoProducto(e.target.files[0])}}/> 
                                     </div>
                                     </form>
                                     <div class="modal-footer">
