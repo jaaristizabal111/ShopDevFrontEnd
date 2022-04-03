@@ -56,11 +56,11 @@ export const MainSelectProducto = () => {
                     <div class="mainContainerPadre">
 
                         <div class="containerIzq">
-                          {/*   <div class="containerIzqImgs">
+                             <div class="containerIzqImgs">
                                 <div><img class="containerIzqImgs3" src={producto.imagenes} alt="java" /></div>
                                 <div><img class="containerIzqImgs3" src={producto.imagenes} alt="java" /></div>
                                 <div><img class="containerIzqImgs3" src={producto.imagenes} alt="java" /></div>
-                            </div> */}
+                            </div> 
 
                             <div><img class="containerIzqImgGrande" src={producto.imagenes} alt="java" /></div>
                         </div>
